@@ -1,8 +1,8 @@
 import { GluestackUIProvider, Text, Box, Heading, ScrollView } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
-import ItemBox from './components/ItemBox';
+import ItemBox from '../components/ItemBox';
 import React, { useState, useEffect } from 'react';
-import NewListItemButton from './components/addNew'
+import NewListItemButton from '../components/addNew'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { TouchableOpacity, Platform } from 'react-native';

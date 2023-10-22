@@ -9,6 +9,7 @@ const Layout = () => {
         <Tabs>
             < Tabs.Screen name="index" options={{
                 headerShown: true,
+                title: 'Liosta',
                 tabBarLabel: 'Home',
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name="home" color={color} size={size} />
@@ -17,8 +18,9 @@ const Layout = () => {
             />
             <Tabs.Screen name="about" options={{
                 tabBarLabel: 'About',
+                title: 'About',
                 tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="person" color={color} size={size} />
+                    <Ionicons name="information-circle-outline" color={color} size={size} />
                 ),
             }}
             />
