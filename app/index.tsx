@@ -1,4 +1,4 @@
-import { GluestackUIProvider, Text, Box, Heading, ScrollView } from '@gluestack-ui/themed';
+import { GluestackUIProvider, Text, Box, Heading, ScrollView, View } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
 import ItemBox from '../components/ItemBox';
 import React, { useState, useEffect } from 'react';
@@ -59,26 +59,27 @@ export default function Page() {
     }
 
     return (
-        <GluestackUIProvider config={config}>
-            {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
-            <NewListItemButton onSubmit={handleAddItem} />
-            <DraggableFlatList
-                data={items}
-                renderItem={({ item, drag, isActive }) => (
-                    <TouchableOpacity onPressIn={drag}>
+        <View style={{ flex: 1, backgroundColor: '#2b2b2b' }}>
+            <GluestackUIProvider config={config}>
+                {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
+                <NewListItemButton onSubmit={handleAddItem} />
+                <DraggableFlatList
+                    data={items}
+                    renderItem={({ item, drag, isActive }) => (
                         <ItemBox
                             item={item}
                             onCheck={() => handleRemoveItem(items.indexOf(item))}
                             onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
+                            drag={drag}
                         />
-                    </TouchableOpacity>
-                )}
-                keyExtractor={(item, index) => `draggable-item-${index}`}
-                onDragEnd={({ data }) => {
-                    setItems(data);
-                    AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
-                }}
-            />
-        </GluestackUIProvider>
+                    )}
+                    keyExtractor={(item, index) => `draggable-item-${index}`}
+                    onDragEnd={({ data }) => {
+                        setItems(data);
+                        AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
+                    }}
+                />
+            </GluestackUIProvider>
+        </View>
     );
 }

@@ -1,28 +1,59 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from "@expo/vector-icons"
 
 const Layout = () => {
-
     return (
         <Tabs>
-            < Tabs.Screen name="index" options={{
-                headerShown: true,
-                title: 'Liosta',
-                tabBarLabel: 'Home',
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="home" color={color} size={size} />
-                ),
-            }}
+            <Tabs.Screen
+                name="index"
+                options={{
+                    headerShown: true,
+                    tabBarActiveBackgroundColor: '#ad74b7',
+                    tabBarInactiveBackgroundColor: '#212121',
+                    title: 'Liosta',
+                    headerTitleStyle: {
+                        color: '#fff',
+                        fontSize: 20,
+                        fontWeight: '900',
+                    },
+                    headerBackground: () => (
+                        <View style={{ backgroundColor: '#2b2b2b', flex: 1 }} />
+                    ),
+                    tabBarLabel: 'Home',
+                    tabBarLabelStyle: {
+                        color: 'white',
+                        fontSize: 15,
+                        fontWeight: '900',
+                    },
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="home" color={'white'} size={size} />
+                    ),
+                    headerLeft: () => (
+                        <Image
+                            source={require('./../assets/icon.png')} // Replace with the path to your icon
+                            style={{ width: 30, height: 30, marginLeft: 10, borderRadius: 100 }}
+                        />
+                    ),
+                }}
             />
-            <Tabs.Screen name="about" options={{
-                tabBarLabel: 'About',
-                title: 'About',
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="information-circle-outline" color={color} size={size} />
-                ),
-            }}
+            <Tabs.Screen
+                name="about"
+                options={{
+                    tabBarLabel: 'About',
+                    tabBarActiveBackgroundColor: '#ad74b7',
+                    tabBarInactiveBackgroundColor: '#212121',
+                    tabBarLabelStyle: {
+                        color: 'white',
+                        fontSize: 15,
+                        fontWeight: '900',
+                    },
+                    title: 'About',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="information-circle-outline" color={'white'} size={size} />
+                    ),
+                }}
             />
         </Tabs>
     )

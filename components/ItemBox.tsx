@@ -2,18 +2,23 @@ import React from 'react'
 import { Box, Input, InputField, Text } from '@gluestack-ui/themed'
 import { FontAwesome5 } from '@expo/vector-icons';
 import CheckboxCheck from './checkbox';
+import { TouchableOpacity, Platform } from 'react-native';
+
 
 interface ItemBoxProps {
     item: { text: string };
     onCheck: () => void;
     onTextChange: (text: string) => void;
+    drag: () => void;
 }
 
-const ItemBox: React.FC<ItemBoxProps> = ({ item, onCheck, onTextChange }) => {
+const ItemBox: React.FC<ItemBoxProps> = ({ item, onCheck, onTextChange, drag }) => {
     return (
         <Box bg={'$primary400'} paddingHorizontal={'$4'} paddingVertical={'$1.5'} margin={5} rounded={'$3xl'}>
             <Box flexDirection="row" alignItems="center" justifyContent="space-between" gap={'$3'}>
-                <FontAwesome5 name="grip-vertical" size={24} color="white" />
+                <TouchableOpacity onPressIn={drag}>
+                    <FontAwesome5 name="grip-vertical" size={24} color="white" />
+                </TouchableOpacity>
                 <Input variant="rounded" size="lg" isDisabled={false} isInvalid={false} isReadOnly={false} flex={1} marginHorizontal={'auto'}>
                     <InputField
                         size="lg"
