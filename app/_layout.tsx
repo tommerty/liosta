@@ -5,7 +5,7 @@ const Layout = () => {
     return (
         <Stack>
             <Stack.Screen name="index" options={{
-                title: 'EverList',
+                title: 'Unnamed List App',
                 headerStyle: {
                     backgroundColor: '#005db4',
                 },

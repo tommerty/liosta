@@ -4,6 +4,9 @@ import ItemBox from './components/ItemBox';
 import React, { useState, useEffect } from 'react';
 import NewListItemButton from './components/addNew'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DraggableFlatList from 'react-native-draggable-flatlist';
+import { TouchableOpacity } from 'react-native';
+
 
 interface Item {
     text: string;
@@ -49,12 +52,23 @@ export default function Page() {
         <GluestackUIProvider config={config}>
             <Heading textAlign='center' padding={'$2'}>myList</Heading>
             <NewListItemButton onSubmit={handleAddItem} />
-            <ScrollView>
-                {/* Render an ItemBox for each item in the list */}
-                {items.map((item, index) => (
-                    <ItemBox key={index} item={item} onCheck={() => handleRemoveItem(index)} onTextChange={(text) => handleTextChange(index, text)} />
-                ))}
-            </ScrollView>
+            <DraggableFlatList
+                data={items}
+                renderItem={({ item, drag, isActive }) => (
+                    <TouchableOpacity onPressIn={drag}>
+                        <ItemBox
+                            item={item}
+                            onCheck={() => handleRemoveItem(items.indexOf(item))}
+                            onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
+                        />
+                    </TouchableOpacity>
+                )}
+                keyExtractor={(item, index) => `draggable-item-${index}`}
+                onDragEnd={({ data }) => {
+                    setItems(data);
+                    AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
+                }}
+            />
         </GluestackUIProvider>
     );
 }
