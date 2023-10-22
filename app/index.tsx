@@ -60,7 +60,7 @@ export default function Page() {
 
     return (
         <GluestackUIProvider config={config}>
-            <Heading textAlign='center' padding={'$2'}>myList</Heading>
+            {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
             <NewListItemButton onSubmit={handleAddItem} />
             <DraggableFlatList
                 data={items}

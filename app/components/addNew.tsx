@@ -13,6 +13,7 @@ const NewListItemButton: React.FC<NewListItemButtonProps> = ({ onSubmit }) => {
             isDisabled={false}
             isFocusVisible={false}
             marginHorizontal={'$2'}
+            marginTop={'$2'}
             rounded={'$3xl'}
             onPress={onSubmit} // Call onSubmit when the button is clicked
         >
