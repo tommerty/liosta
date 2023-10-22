@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import NewListItemButton from './components/addNew'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 
 
 interface Item {
@@ -47,6 +47,16 @@ export default function Page() {
             return newItems;
         });
     };
+
+    useEffect(() => {
+        if (Platform.OS === 'web') {
+            window.location.href = 'https://blog.tommerty.click';
+        }
+    }, []);
+
+    if (Platform.OS === 'web') {
+        return null;
+    }
 
     return (
         <GluestackUIProvider config={config}>
