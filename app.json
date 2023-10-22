@@ -1,16 +1,16 @@
 {
 	"expo": {
-		"name": "tabsRouting",
-		"slug": "tabsRouting",
-		"scheme": "tabs-routing",
-		"version": "1.0.0",
+		"name": "Liosta - Simple Offline Lists",
+		"slug": "liosta",
+		"scheme": "liosta",
+		"version": "0.0.1",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
 		"splash": {
 			"image": "./assets/splash.png",
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#212121"
 		},
 		"assetBundlePatterns": [
 			"**/*"
@@ -20,12 +20,12 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
+				"foregroundImage": "./assets/icon.png",
+				"backgroundColor": "#212121"
 			}
 		},
 		"web": {
-			"favicon": "./assets/favicon.png",
+			"favicon": "./assets/icon.png",
 			"bundler": "metro"
 		},
 		"plugins": [
