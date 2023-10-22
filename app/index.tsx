@@ -1,5 +1,12 @@
-import HomeScreen from '../screens/Login/SplashScreen';
+import {View, Text} from 'react-native';
+import React from 'react';
 
-export default function Home() {
-  return <HomeScreen />;
-}
+const Page = () => {
+    return (
+        <View>
+        <Text>hello world</Text>
+        </View>
+    );
+    }
+
+export default Page;
