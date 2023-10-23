@@ -1,99 +1,32 @@
-Simple template to reuse for Expo Router
+# Liosta - Simple Todo Lists
+![liosta pill](https://github.com/tommerty/liosta/assets/86270372/8972b58b-bbce-4016-a850-fce3a11b50a5)
 
+Liosta is a simple but intuitive todo list app built for Android and iOS. 
 
-commands run
+### Features
+- Completely offline by default 
+- One single list
+- When an item is gone, it's gone
 
-`npx create-expo-app tabsRouting -t expo-template-blank-typescript`
+### Future Plans
+- Cloud sync to account
+- Multiple lists
+- Sharing lists with other users to collaborate
 
-`npx expo install react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler`
+## Why I built Liosta
+I built Liosta because I was looking for a simple todo app for me and my partner to help manage things like what we want when going shopping, simple tasks to do around the house, etc. All todo apps are overly complicated, force ads for free versions, or just some other shady practises. I just wanted a simple todo app so we can just manage everything day to day. If it's on the list, it needs to be completed/bought/etc.
 
-`npx expo install react-native-web@~0.19.6 react-dom@18.2.0`
+## Tech
+- React Native
+- Typescript
+- Gluestack
+- Expo
 
-app.json:
+## Contribution
+If you wish to contribute, by all means fork the repository and submit pull requests! I plan on adding a section somewhere on the app to automatically pull contributor data to showcase your profile as a thanks.
 
-```
-{
-	"expo": {
-		"name": "tabsRouting",
-		"slug": "tabsRouting",
-		"scheme": "tabs-routing",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/icon.png",
-		"userInterfaceStyle": "light",
-		"splash": {
-			"image": "./assets/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
-		},
-		"assetBundlePatterns": [
-			"**/*"
-		],
-		"ios": {
-			"supportsTablet": true
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
-			}
-		},
-		"web": {
-			"favicon": "./assets/favicon.png",
-			"bundler": "metro"
-		},
-		"plugins": [
-			"expo-router"
-		],
-		"experiments": {
-			"typedRoutes": true
-		}
-	}
-}
-```
-babel.config.js:
+### Running the app locally
+You will need to ensure you have [Expo](https://expo.dev) installed on your machine, as well as a virtual environment either via xCode or Android Studio. The app currently does not work on web due to it using platform specific tools for re-ordering items.
 
-```
-module.exports = function (api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: ['expo-router/babel', 'react-native-reanimated/plugin']
-  };
-};
-
-```
-package.json:
-
-```
-{
-  "name": "tabsrouting",
-  "version": "1.0.0",
-  "main": "expo-router/entry",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
-  },
-  "dependencies": {
-    "expo": "~49.0.15",
-    "expo-status-bar": "~1.6.0",
-    "react": "18.2.0",
-    "react-native": "0.72.6",
-    "react-native-safe-area-context": "4.6.3",
-    "react-native-screens": "~3.22.0",
-    "expo-linking": "~5.0.2",
-    "expo-constants": "~14.4.2",
-    "react-native-gesture-handler": "~2.12.0",
-    "react-native-web": "~0.19.6",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@types/react": "~18.2.14",
-    "typescript": "^5.1.3"
-  },
-  "private": true
-}
-```
+1. `npm i -y`
+2. `npx expo`
