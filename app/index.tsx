@@ -34,8 +34,22 @@ export default function Page() {
 
     const handleRemoveItem = (index: number) => {
         setItems(prevItems => {
-            const newItems = prevItems.filter((item, i) => i !== index);
+            const newItems = [...prevItems];
+            newItems.splice(index, 1);
             AsyncStorage.setItem('items', JSON.stringify(newItems)); // Store items in AsyncStorage
+
+            // Uncheck the next item in the list if it exists
+            if (newItems.length > index) {
+                AsyncStorage.getItem('checked').then(storedChecked => {
+                    if (storedChecked) {
+                        const prevChecked = JSON.parse(storedChecked);
+                        const newChecked = [...prevChecked];
+                        newChecked.splice(index, 1);
+                        AsyncStorage.setItem('checked', JSON.stringify(newChecked)); // Store checked state in AsyncStorage
+                    }
+                });
+            }
+
             return newItems;
         });
     };
