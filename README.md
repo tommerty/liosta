@@ -3,6 +3,11 @@
 
 Liosta is a simple but intuitive todo list app built for Android and iOS. 
 
+![GitHub Sponsor](https://img.shields.io/github/sponsors/tommerty?label=Sponsor&logo=GitHub)
+![GitHub Repo stars](https://img.shields.io/github/stars/tommerty/liosta)
+![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/IRLCreate)
+
+
 ### Features
 - Completely offline by default 
 - One single list
