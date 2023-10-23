@@ -33,6 +33,7 @@ export default function Page() {
     };
 
     const handleRemoveItem = (index: number) => {
+        console.log('Removing item at index', index);
         setItems(prevItems => {
             const newItems = [...prevItems];
             newItems.splice(index, 1);

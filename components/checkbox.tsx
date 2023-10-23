@@ -1,5 +1,5 @@
 import Checkbox from 'expo-checkbox';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 interface CheckboxCheckProps {
@@ -9,6 +9,20 @@ interface CheckboxCheckProps {
 const CheckboxCheck: React.FC<CheckboxCheckProps> = ({ onCheck }) => {
     const [isChecked, setChecked] = useState(false);
 
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
+        if (isChecked) {
+            timeoutId = setTimeout(() => {
+                onCheck();
+            }, 200);
+        }
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [isChecked, onCheck]);
+
     return (
         <View>
             <Checkbox
@@ -16,9 +30,6 @@ const CheckboxCheck: React.FC<CheckboxCheckProps> = ({ onCheck }) => {
                 value={isChecked}
                 onValueChange={(newValue) => {
                     setChecked(newValue);
-                    if (newValue) {
-                        setTimeout(onCheck, 2000); // Call onCheck after 2 seconds if the checkbox is checked
-                    }
                 }}
                 color={isChecked ? '#8A69F3' : 'white'} // Change color based on isChecked state
             />
@@ -35,4 +46,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CheckboxCheck
+export default CheckboxCheck;
