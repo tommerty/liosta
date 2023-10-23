@@ -1,6 +1,7 @@
 import { View } from 'react-native'
-import { Heading, Text } from '@gluestack-ui/themed'
+import { Button, Heading, Text } from '@gluestack-ui/themed'
 import React from 'react'
+import { Link } from 'expo-router'
 
 const InfoText = () => {
     return (
@@ -18,6 +19,13 @@ const InfoText = () => {
             <Text>
                 I eventually want to incorporate some sort of cloud system to sync lists and even share lists with others. I primarily created this because I want a todo list that me and my partner can add groceries too, and items completely dissapear once they're checked. Even further down the road, I want to add scheduled items that can be synced with a calendar app.
             </Text>
+            <Heading>Open Source</Heading>
+            <Text marginBottom={'$4'}>
+                Liosta is open source, so if you have any suggestions, improvements or anything else please feel free to contribute to the project! You can find the source code on GitHub below.
+            </Text>
+            <Link href={"https://github.com/tommerty/liosta"}>
+                <Button bgColor='#8A69F3'><Text color='white' fontWeight='$black'>GitHub</Text></Button>
+            </Link>
         </View>
     )
 }

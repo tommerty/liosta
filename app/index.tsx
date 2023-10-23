@@ -84,8 +84,7 @@ export default function Page() {
                             item={item}
                             onCheck={() => handleRemoveItem(items.indexOf(item))}
                             onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
-                            drag={drag}
-                        />
+                            drag={drag} isChecked={false} />
                     )}
                     keyExtractor={(item, index) => `draggable-item-${index}`}
                     onDragEnd={({ data }) => {
