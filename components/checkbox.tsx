@@ -20,7 +20,7 @@ const CheckboxCheck: React.FC<CheckboxCheckProps> = ({ onCheck }) => {
                         setTimeout(onCheck, 2000); // Call onCheck after 2 seconds if the checkbox is checked
                     }
                 }}
-                color={isChecked ? 'green' : 'gray'} // Change color based on isChecked state
+                color={isChecked ? '#8A69F3' : 'white'} // Change color based on isChecked state
             />
         </View>
     );

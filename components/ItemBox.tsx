@@ -14,7 +14,7 @@ interface ItemBoxProps {
 
 const ItemBox: React.FC<ItemBoxProps> = ({ item, onCheck, onTextChange, drag }) => {
     return (
-        <Box bg={'$primary400'} paddingHorizontal={'$4'} paddingVertical={'$1.5'} margin={5} rounded={'$3xl'}>
+        <Box bg={'#8A69F3'} paddingHorizontal={'$4'} paddingVertical={'$1.5'} margin={5} rounded={'$3xl'}>
             <Box flexDirection="row" alignItems="center" justifyContent="space-between" gap={'$3'}>
                 <TouchableOpacity onPressIn={drag}>
                     <FontAwesome5 name="grip-vertical" size={24} color="white" />
@@ -23,7 +23,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({ item, onCheck, onTextChange, drag }) 
                     <InputField
                         size="lg"
                         color='$white'
-                        placeholderTextColor={'$primary700'}
+                        placeholderTextColor={'white'}
                         placeholder='New Task...'
                         value={item.text}
                         onChangeText={onTextChange}

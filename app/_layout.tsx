@@ -10,7 +10,7 @@ const Layout = () => {
                 name="index"
                 options={{
                     headerShown: true,
-                    tabBarActiveBackgroundColor: '#ad74b7',
+                    tabBarActiveBackgroundColor: '#8A69F3',
                     tabBarInactiveBackgroundColor: '#212121',
                     title: 'Liosta',
                     headerTitleStyle: {
@@ -19,7 +19,7 @@ const Layout = () => {
                         fontWeight: '900',
                     },
                     headerBackground: () => (
-                        <View style={{ backgroundColor: '#2b2b2b', flex: 1 }} />
+                        <View style={{ backgroundColor: '#212121', flex: 1 }} />
                     ),
                     tabBarLabel: 'Home',
                     tabBarLabelStyle: {
@@ -42,14 +42,22 @@ const Layout = () => {
                 name="about"
                 options={{
                     tabBarLabel: 'About',
-                    tabBarActiveBackgroundColor: '#ad74b7',
+                    tabBarActiveBackgroundColor: '#8A69F3',
                     tabBarInactiveBackgroundColor: '#212121',
                     tabBarLabelStyle: {
                         color: 'white',
                         fontSize: 15,
                         fontWeight: '900',
                     },
-                    title: 'About',
+                    headerBackground: () => (
+                        <View style={{ backgroundColor: '#212121', flex: 1 }} />
+                    ),
+                    title: 'About Liosta',
+                    headerTitleStyle: {
+                        color: '#fff',
+                        fontSize: 20,
+                        fontWeight: '900',
+                    },
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="information-circle-outline" color={'white'} size={size} />
                     ),

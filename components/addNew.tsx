@@ -8,6 +8,7 @@ interface NewListItemButtonProps {
 const NewListItemButton: React.FC<NewListItemButtonProps> = ({ onSubmit }) => {
     return (
         <Button
+            bgColor='#7054C7'
             size="lg"
             action="primary"
             isDisabled={false}
