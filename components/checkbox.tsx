@@ -1,37 +1,47 @@
 import Checkbox from 'expo-checkbox';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 interface CheckboxCheckProps {
+    isChecked: boolean;
     onCheck: () => void;
 }
 
-const CheckboxCheck: React.FC<CheckboxCheckProps> = ({ onCheck }) => {
-    const [isChecked, setChecked] = useState(false);
+const CheckboxCheck: React.FC<CheckboxCheckProps> = ({ isChecked, onCheck }) => {
+    const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        let timeoutId: NodeJS.Timeout;
-
         if (isChecked) {
-            timeoutId = setTimeout(() => {
+            const id = setTimeout(() => {
                 onCheck();
-            }, 200);
+            }, 2000);
+
+            setTimeoutId(id);
+        } else {
+            // Clear the timeout if isChecked becomes false
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
         }
 
         return () => {
-            clearTimeout(timeoutId);
+            // Make sure to clear the timeout on unmount
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
         };
-    }, [isChecked, onCheck]);
+    }, [isChecked, onCheck, timeoutId]);
 
     return (
         <View>
             <Checkbox
                 style={styles.checkbox}
                 value={isChecked}
-                onValueChange={(newValue) => {
-                    setChecked(newValue);
+                onValueChange={() => {
+                    onCheck();
                 }}
-                color={isChecked ? '#8A69F3' : 'white'} // Change color based on isChecked state
+                color={isChecked ? '#8A69F3' : 'white'}
             />
         </View>
     );
