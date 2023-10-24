@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import { Box, Input, InputField, Textarea, TextareaInput } from '@gluestack-ui/themed';
 import { FontAwesome5 } from '@expo/vector-icons';
 import CheckboxCheck from './checkbox';
