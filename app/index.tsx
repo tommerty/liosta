@@ -76,7 +76,6 @@ export default function Page() {
         <View style={{ flex: 1, backgroundColor: '#2b2b2b' }}>
             <GluestackUIProvider config={config}>
                 {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
-                <NewListItemButton onSubmit={handleAddItem} />
                 <DraggableFlatList
                     data={items}
                     renderItem={({ item, drag, isActive }) => (
@@ -92,6 +91,11 @@ export default function Page() {
                         AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
                     }}
                 />
+                <View
+                    style={{ position: 'absolute', right: 30, bottom: 30 }}
+                >
+                    <NewListItemButton onSubmit={handleAddItem} />
+                </View>
             </GluestackUIProvider>
         </View>
     );

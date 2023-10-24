@@ -8,18 +8,18 @@ interface NewListItemButtonProps {
 const NewListItemButton: React.FC<NewListItemButtonProps> = ({ onSubmit }) => {
     return (
         <Button
-            bgColor='#7054C7'
-            size="lg"
-            action="primary"
-            isDisabled={false}
-            isFocusVisible={false}
-            marginHorizontal={'$2'}
-            marginTop={'$2'}
-            rounded={'$3xl'}
+            borderRadius="$full"
+            width={'$16'}
+            height={'$16'}
+            size={'xl'}
+            p="$3.5"
+            bg="#2b2b2b"
+            borderColor="#8A69F3"
+            borderWidth={'$2'}
             onPress={onSubmit} // Call onSubmit when the button is clicked
         >
-            <ButtonText>Add </ButtonText>
-            <ButtonIcon as={AddIcon} />
+            <ButtonIcon as={AddIcon}
+                size={'xl'} />
         </Button>
     )
 }
