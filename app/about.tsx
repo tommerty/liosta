@@ -6,7 +6,7 @@ export default function Modal() {
     // a full screen page. You may need to change the UI to account for this.
     const isPresented = router.canGoBack();
     return (
-        <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#2a204b' }}>
+        <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#2a204b', padding: 9 }}>
             <Text style={{ color: "white", fontSize: 24, fontWeight: "bold", paddingBottom: 20 }}>Thanks for checking out my app!</Text>
             <Text style={{ color: "white" }}>
                 Liosta is a free to use an offline todo list and planner app without any additional and uneeded features. It's completely offline (for now, anyway), and it's designed to be a "global" todo list. When I say "global", I mean that you don't have different lists for different things, items don't renew/expire/or anything else. You jot down what you need to do, and once you've done it you can delete it. Simple as that.
