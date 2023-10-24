@@ -12,7 +12,7 @@
     "@gluestack-style/react": "^1.0.8",
     "@gluestack-ui/config": "^1.0.3",
     "@gluestack-ui/themed": "^1.0.8",
-    "@react-native-async-storage/async-storage": "^1.19.3",
+    "@react-native-async-storage/async-storage": "1.18.2",
     "@react-navigation/drawer": "^6.6.5",
     "expo": "~49.0.15",
     "expo-checkbox": "~2.4.0",

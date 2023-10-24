@@ -6,6 +6,7 @@ import NewListItemButton from '../components/addNew'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { TouchableOpacity, Platform } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 
 interface Item {
@@ -74,31 +75,33 @@ export default function Page() {
 
     return (
         <>
-            <View style={{ flex: 1, backgroundColor: '#2a204b' }}>
-                <GluestackUIProvider config={config}>
-                    {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
-                    <DraggableFlatList
-                        data={items}
-                        renderItem={({ item, drag, isActive }) => (
-                            <ItemBox
-                                item={item}
-                                onCheck={() => handleRemoveItem(items.indexOf(item))}
-                                onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
-                                drag={drag} isChecked={false} />
-                        )}
-                        keyExtractor={(item, index) => `draggable-item-${index}`}
-                        onDragEnd={({ data }) => {
-                            setItems(data);
-                            AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
-                        }}
-                    />
-                    <View
-                        style={{ position: 'absolute', right: 30, bottom: 30 }}
-                    >
-                        <NewListItemButton onSubmit={handleAddItem} />
-                    </View>
-                </GluestackUIProvider>
-            </View>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={{ flex: 1, backgroundColor: '#2a204b' }}>
+                    <GluestackUIProvider config={config}>
+                        {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
+                        <DraggableFlatList
+                            data={items}
+                            renderItem={({ item, drag, isActive }) => (
+                                <ItemBox
+                                    item={item}
+                                    onCheck={() => handleRemoveItem(items.indexOf(item))}
+                                    onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
+                                    drag={drag} isChecked={false} />
+                            )}
+                            keyExtractor={(item, index) => `draggable-item-${index}`}
+                            onDragEnd={({ data }) => {
+                                setItems(data);
+                                AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
+                            }}
+                        />
+                        <View
+                            style={{ position: 'absolute', right: 30, bottom: 30 }}
+                        >
+                            <NewListItemButton onSubmit={handleAddItem} />
+                        </View>
+                    </GluestackUIProvider>
+                </View>
+            </TouchableWithoutFeedback>
         </>
     );
 }
