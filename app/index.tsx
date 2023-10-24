@@ -6,6 +6,8 @@ import NewListItemButton from '../components/addNew'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { TouchableOpacity, Platform } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
 
 
 interface Item {
@@ -73,7 +75,8 @@ export default function Page() {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#2b2b2b' }}>
+        <View style={{ flex: 1, backgroundColor: '#2a204b' }}>
+            <StatusBar style="light" />
             <GluestackUIProvider config={config}>
                 {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
                 <DraggableFlatList
