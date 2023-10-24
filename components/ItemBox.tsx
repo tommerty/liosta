@@ -30,7 +30,10 @@ const ItemBox: React.FC<ItemBoxProps> = ({ item, isChecked, onCheck, onTextChang
                     onPressIn={drag}>
                     <FontAwesome5
                         name="grip-vertical"
-                        size={24} color="white" />
+                        size={32}
+                        padding={'$2'}
+                        color="white"
+                    />
                 </TouchableOpacity>
                 <Input
                     variant="rounded"
