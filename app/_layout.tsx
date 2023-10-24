@@ -1,19 +1,30 @@
 import { Tabs } from 'expo-router/tabs';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Text } from '@gluestack-ui/themed';
 
 export default function AppLayout() {
     return (
         <Tabs screenOptions={{
-
+            tabBarHideOnKeyboard: true,
+            tabBarActiveTintColor: 'red',
+            tabBarStyle: {
+                shadowColor: 'transparent',
+                borderBlockColor: 'transparent',
+                backgroundColor: '#352a5c',
+            },
         }}>
             <Tabs.Screen
                 // Name of the route to hide.
                 name="index"
                 options={{
+                    tabBarLabel: ({ focused, color }) => (
+                        <Text style={{ color: focused ? 'white' : 'gray' }}>
+                            Home
+                        </Text>
+                    ),
+
                     // This tab will no longer show up in the tab bar.
-                    title: 'Home',
                     headerTitle: 'Liosta',
-                    tabBarLabel: 'Home',
                     tabBarLabelStyle: {
                         color: 'white',
                     },
@@ -25,10 +36,8 @@ export default function AppLayout() {
                         color: 'white',
                         fontSize: 24,
                     },
-                    tabBarActiveBackgroundColor: '#413370',
-                    tabBarInactiveBackgroundColor: '#2b224a',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={"white"} size={size} />
+                    tabBarIcon: ({ focused, size }) => (
+                        <FontAwesome5 name="home" color={focused ? 'white' : 'gray'} size={20} />
                     ),
                 }}
             />
@@ -36,10 +45,14 @@ export default function AppLayout() {
                 // Name of the route to hide.
                 name="settings"
                 options={{
+                    tabBarLabel: ({ focused, color }) => (
+                        <Text style={{ color: focused ? 'white' : 'gray' }}>
+                            Settings
+                        </Text>
+                    ),
+
                     // This tab will no longer show up in the tab bar.
-                    title: 'Settings',
                     headerTitle: 'Settings',
-                    tabBarLabel: 'Settings',
                     tabBarLabelStyle: {
                         color: 'white',
                     },
@@ -51,10 +64,8 @@ export default function AppLayout() {
                         color: 'white',
                         fontSize: 24,
                     },
-                    tabBarActiveBackgroundColor: '#413370',
-                    tabBarInactiveBackgroundColor: '#2b224a',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="cog" color={"white"} size={size} />
+                    tabBarIcon: ({ focused, size }) => (
+                        <FontAwesome5 name="cog" color={focused ? 'white' : 'gray'} size={20} />
                     ),
                 }}
             />

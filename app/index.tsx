@@ -74,34 +74,42 @@ export default function Page() {
     }
 
     return (
-        <>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={{ flex: 1, backgroundColor: '#2a204b' }}>
-                    <GluestackUIProvider config={config}>
-                        {/* <Heading textAlign='center' padding={'$2'}>myList</Heading> */}
-                        <DraggableFlatList
-                            data={items}
-                            renderItem={({ item, drag, isActive }) => (
-                                <ItemBox
-                                    item={item}
-                                    onCheck={() => handleRemoveItem(items.indexOf(item))}
-                                    onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
-                                    drag={drag} isChecked={false} />
-                            )}
-                            keyExtractor={(item, index) => `draggable-item-${index}`}
-                            onDragEnd={({ data }) => {
-                                setItems(data);
-                                AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
-                            }}
-                        />
-                        <View
-                            style={{ position: 'absolute', right: 30, bottom: 30 }}
-                        >
-                            <NewListItemButton onSubmit={handleAddItem} />
-                        </View>
-                    </GluestackUIProvider>
-                </View>
-            </TouchableWithoutFeedback>
-        </>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={{ flex: 1, backgroundColor: '#2a204b' }}>
+                <GluestackUIProvider config={config}>
+                    {/* ...your existing code... */}
+                    {items.length === 0 && (
+                        <>
+                            <Text style={{ color: 'white', textAlign: 'center', marginTop: 20 }}>
+                                Woohoo, you've nothing left to do 🎉
+                            </Text>
+                            <Text style={{ color: 'white', textAlign: 'center', marginTop: 20 }}>
+                                Click the button below to add a new item
+                            </Text>
+                        </>
+                    )}
+                    <DraggableFlatList
+                        data={items}
+                        renderItem={({ item, drag, isActive }) => (
+                            <ItemBox
+                                item={item}
+                                onCheck={() => handleRemoveItem(items.indexOf(item))}
+                                onTextChange={(text) => handleTextChange(items.indexOf(item), text)}
+                                drag={drag} isChecked={false} />
+                        )}
+                        keyExtractor={(item, index) => `draggable-item-${index}`}
+                        onDragEnd={({ data }) => {
+                            setItems(data);
+                            AsyncStorage.setItem('items', JSON.stringify(data)); // Save the new order of items in AsyncStorage
+                        }}
+                    />
+                    <View
+                        style={{ position: 'absolute', right: 30, bottom: 30 }}
+                    >
+                        <NewListItemButton onSubmit={handleAddItem} />
+                    </View>
+                </GluestackUIProvider>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
