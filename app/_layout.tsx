@@ -44,7 +44,9 @@ export default function AppLayout() {
             <Tabs.Screen
                 // Name of the route to hide.
                 name="settings"
+
                 options={{
+                    href: null,
                     tabBarLabel: ({ focused, color }) => (
                         <Text style={{ color: focused ? 'white' : 'gray' }}>
                             Settings
